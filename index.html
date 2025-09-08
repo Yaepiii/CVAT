@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CVAT: A Curved Voxel Association Triangle Descriptor for Universal LiDAR Place Recognition">
+  <meta name="keywords" content="CVAT: A Curved Voxel Association Triangle Descriptor for Universal LiDAR Place Recognition">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CVAT</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="./web/static/css/bootstrap-4.4.1.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  
+  
+  
+  <link rel="stylesheet" href="./web/static/css/bulma.min.css">
+  <link rel="stylesheet" href="./web/static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./web/static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./web/static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./web/static/css/index.css">
+  <link rel="icon" href="./web/static/images/logo.webp">
+
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./web/static/js/fontawesome.all.min.js"></script>
+  <script src="./web/static/js/bulma-carousel.min.js"></script>
+  <script src="./web/static/js/bulma-slider.min.js"></script>
+  <script src="./web/static/js/index.js"></script>
+  <script src="./web/static/js/app.js"></script>
+  <script src="./web/static/js/video_comparison.js"></script>
+
+  <link rel="stylesheet" href="./web/static/css/dics.original.css">
+  <script src="./web/static/js/event_handler.js"></script>
+  <script src="./web/static/js/dics.original.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="margin-bottom: 0"><img src="web/static/images/logo.png" width="80">   <strong>CVAT</strong></h1>
+          <br>
+          <h2 class="title is-3 publication-title" style="margin-top: 0; margin-bottom: 0">A Curved Voxel Association Triangle Descriptor for Universal LiDAR Place Recognition</h2>
+          <!-- <br> -->
+          <div class="tmm2025" style="margin-top: 10px; margin-bottom: 20px;">
+            <h2 class="title is-4">IEEE ICRA 2026</h2>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yaepiii.github.io/">Yanpeng Jia</a><sup>1,2</sup></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://github.com/ROBOT-WSC">Shaocong Wang</a><sup>1,2*</sup></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://people.ucas.ac.cn/~siawangting1">Ting Wang</a><sup>1*</sup>
+            </span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Xianyuan Zhu</a><sup>1</sup>
+            </span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://people.ucas.edu.cn/~shaoshiliang">Shiliang Shao</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+          </div>
+          <!-- <br> -->
+          <div class="column is-full_width">
+            <h2 class="is-size-6">* corresponding author</h2>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Shenyang Institute of Automation</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>University of Chinese Academy of Sciences</span>&nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="empty"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+          
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Yaepiii/CVAT"
+                   class="external-link button is-normal is-rounded is-dark disabled">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> 
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div style="width: 70%; height: 70%; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
+        <video id="teaser" autoplay muted loop style="width: 100%; height: 100%;">
+          <source src="web/resources/teaser_nerf-on-the-go.mp4" type="video/mp4">
+        </video>
+      </div> -->
+      <!-- <img class="rounded" src="./media/nice-slam/teaser.png" > -->
+      <!-- <br><br><br>
+      <h2 class="subtitle has-text-centered">
+        <strong style="font-size: 0.9em;">NeRF <em>On-the-go</em></strong> enables novel view synthesis in in-the-wild scenes from casually captured images.
+    </h2>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+      
+          <video class="video" width="80%" id="xyalias6" loop playsinline autoplay muted src="web/resources/yard_high_pj.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+          <canvas height=0 class="videoMerge" id="xyalias6Merge"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!--
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Reconstructions</h2>
+
+        <div class="embed-responsive embed-responsive-16by9">
+
+          <iframe style="clip-path: inset(1px 1px)" src="https://sketchfab.com/playlists/embed?collection=abee3cc1a7a7436c804f2bd3aadc2acd" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" mozallowfullscreen="true" webkitallowfullscreen="true" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+        
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+-->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The universality and robustness of existing place
+            recognition methods are significantly affected by differences
+            in the characteristics of multi-modal LiDARs. To address this
+            issue, this paper proposes a universal place recognition method
+            designed for multi-modal LiDARs. The method is based on the
+            construction of curved-surface and triangle descriptors with
+            curved voxels that is adaptable to the LiDAR beam. In the
+            global retrieval stage, we introduce a FOV Alignment method
+            to handle the matching of LiDARs with significant differences in
+            FOV or viewpoint. For the fine verification, places are effectively
+            associated by combining the local occupancy information of
+            vertexes and the spatial topological relationship of triangles.
+            Additionally, a triangle pose refinement algorithm is proposed
+            to estimate the precise 6-DOF pose. Extensive experiments are
+            conducted on four public datasets with both single-LiDAR and
+            cross-LiDAR. The experimental results demonstrate that the
+            proposed method outperforms existing methods in terms of
+            universality and robustness. The code is released as open source
+            upon acceptance.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    
+    <!-- <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div style="width: 70%; height: 70%; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
+          <video id="teaser" autoplay muted loop style="width: 100%; height: 100%;">
+            <source src="web/resources/CAD-Mesher.mp4" type="video/mp4">
+          </video>
+        </div>-->
+        <!-- <img class="rounded" src="./media/nice-slam/teaser.png" > -->
+        <!-- <br><br><br>
+        <h2 class="subtitle has-text-centered">
+          <strong style="font-size: 0.9em;">CAD-Mesher</strong> can easily integrating with various LiDAR odometry to further improve localization accuracy, 
+          filtering dynamic objects and generating a accurate, consecutive, and dense mesh map.
+        </h2>
+      </div>
+    </div> -->
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/BgZGm0iwlHU?si=dKFGKPHN7Mu7mvCK"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <br><br><br>
+        <h2 class="subtitle has-text-centered">
+            <strong style="font-size: 0.9em;">CVAT</strong> can achieve universal LiDAR place recognition by the proposed curved voxel association triangle descriptor.
+        </h2>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: -20px">Method</h2>
+
+        <div style="width: 100%; margin: 0 auto; display: flex; justify-content: center;">
+          <img src="./web/resources/figure2.png" style="width: 150%;">
+        </div>
+        <div class="content has-text-justified">
+          <p style="margin-top: 30px">
+            The system framework of CVAT is illustrated in Figure.
+            After pre-processing the input point cloud, curved-surface
+            features and triangle descriptors are generated based on the
+            curved voxel map. In the place recognition stage, candidate
+            places are selected through FOV Alignment for coarse retrieval, followed by fine verification using triangle descriptors. Finally, place similarity and 6-DOF pose estimation are
+            achieved.
+        </div>
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+</section>
+
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px"><i>On-the-go</i> Dataset</h2>
+        <video class="video" controls muted autoplay loop src="web/resources/on-the-go.mp4"></video>
+        <div class="content has-text-justified">
+          <p>
+            To rigorously evaluate our approach in real-world settings, we captured a dataset that contains 12 casually captured sequences, including 10 outdoor and 2 indoor scenes. 
+            We name this dataset On-the-go dataset. This dataset features a wide range of dynamic objects including pedestrians, cyclists, strollers, toys, cars, robots, and trams, along with diverse occlusion ratios ranging from 5% to 30%.
+
+          </p>
+        </div>
+        
+     
+    </div>
+
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Single LiDAR Place Recognition Evaluation</h2>
+
+        <h3 class="title is-4">Place Recognition Evaluation</h3>
+        <div class="content has-text-justified">
+          <p>
+            The experimental results are summarized in
+            Table I. Our method achieves superior performance on the
+            KITTI and KITTI-360 datasets, maintaining stability even
+            when handling reverse loops and large-scale scenes. Due
+            to challenges such as occlusions, narrow FOV, and nonrepetitive scanning, most methods on the HeLiPR and MCD
+            datasets exhibit decreased accuracy or even fail. Nevertheless, our approach, incorporating the FOV Alignment 
+            strategy and the coarse-to-fine verification approach, consistently
+            demonstrates satisfactory performance.
+          </p>
+        </div>
+
+        <div class="hero-body">
+          <img class="rounded" src="./web/resources/table1.png" >
+        </div>
+        
+        <h3 class="title is-4">6-DOF Pose Estimation Evaluation</h3>
+        <div class="content has-text-justified">
+          <p>
+            For 6-DoF pose estimation, our algorithm outperforms
+            the compared methods in most sequences. Even in the
+            Riverside04 sequence, where crossing the bridge introduces
+            numerous invalid LiDAR points due to water surface reflections, 
+            multi-stage pose optimization ensures robust performance of the proposed method. Figure illustrates the point
+            cloud registration results using the 6-DoF poses estimated by
+            our algorithm under conditions of 180° viewpoint differences
+            and narrow FOV. By combining RANSAC with Triangle
+            Pose Refinement, the algorithm achieves minimal registration
+            ghosting and high-quality alignment.
+          </p>
+        </div>
+        <div class="hero-body">
+          <img class="rounded" src="./web/resources/figure5.png" >
+        </div>
+        <br>
+        <br><br>
+    </div>
+
+  </div>
+</section>
+  
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Multi LiDAR Place Recognition Evaluation</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            The experimental results are presented in
+            Fig. 6. In most cross-LiDAR matching scenarios, single-LiDAR place recognition methods fail to produce reliable
+            results. The descriptors of SC and SOLiD are unable to
+            handle cases with large FOV differences between LiDARs;
+            M2DP loses specificity when point cloud density varies significantly; STD cannot construct stable triangle descriptors
+            when the scanning mode changes. DVMM demonstrates superior performance when matching Velodyne and Ouster, but
+            its accuracy drops considerably in other scenarios, likely due
+            to the challenges posed by large-scale and highly complex
+            urban environments.
+          </p>
+        </div>
+
+        <div class="hero-body">
+          <img class="rounded" src="./web/resources/figure6.png" >
+        </div>
+        
+        <div class="content has-text-justified">
+          <p>
+            In contrast, the proposed method, with its meticulously
+            designed triangle descriptors based on curved voxels, effectively captures the structural 
+            characteristics of the environment and enhances the generalization ability of cross-LiDAR
+            place recognition, achieving superior performance. Figure
+            illustrates the place recognition results using Ouster 128 as
+            the reference. The results indicate that CVAT maintains stable
+            performance even when the LiDAR FOV narrows or when
+            point cloud density and quantity decrease.
+          </p>
+        </div>
+        
+        <div class="hero-body">
+          <img class="rounded" src="./web/resources/figure7.png" >
+        </div>
+        
+
+        <br>
+        <br><br>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Robustness Test</h2>
+        <div class="content has-text-justified">
+          <p>
+            For a place recognition system, the ability to reliably
+            detect long-distance loop closures while maintaining overall
+            system performance is a key indicator of robustness. In this
+            experiment, the Velodyne VLP16 and Livox Avia LiDARs
+            from the KAIST05 sequence are selected to evaluate this
+            capability by varying the recognition threshold for positive
+            samples. Three thresholds (3 m, 10 m, and 15 m) are tested.
+            The results are presented in Fig. 8. As the threshold distance
+            increases, the performance of SOLiD and STD declines
+            rapidly, whereas the precision-recall curve of the proposed
+            method contracts more slowly, demonstrating strong robustness.
+          </p>
+        </div>         
+
+        <div class="hero-body">
+          <img class="rounded" src="./web/resources/figure8.png" >
+        </div>
+
+        <br>
+        <br><br>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Additional Results</h2>
+
+        <h3 class="title is-4">Comparison with RobustNeRF</h3>
+        <div class="content has-text-justified">
+          <p>
+            RobustNeRF employs hard thresholding to eliminate distractors, which makes it sensitive to the threshold value and may not generalize effectively in complex scenes.
+            Our method is more robust to the distractors and can handle more complicated scenes.
+
+          </p>
+        </div>
+        
+        <div class="content has-text-centered" style="width: 80%; display: flex; justify-content: center; align-items: center">
+          <video class="video" width="100%" id="xyalias1" loop playsinline autoplay muted src="web/resources/bellevue_pj.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+          <canvas height=0 class="videoMerge" id="xyalias1Merge" style="width: 80%;"></canvas>
+        </div>
+        
+        <div class="content has-text-centered" style="width: 80%; display: flex; justify-content: center; align-items: center">
+          <video class="video" width="100%" id="xyalias2" loop playsinline autoplay muted src="web/resources/rigi_pj.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+          <canvas height=0 class="videoMerge" id="xyalias2Merge" style="width: 80%;"></canvas>
+        </div>
+        
+
+        <h3 class="title is-4">Comparison with NeRF-W</h3>
+        <div class="content has-text-justified">
+          <p>
+            Compare with NeRF-W, our method can handle more complicated scenes with higher occlusion ratio. 
+            Furthermore, it does not depend on transient embedding, which adds extra complexity and can potentially result in the loss of high-frequency details.
+          </p>
+        </div>
+
+        <div class="content has-text-centered" style="width: 80%; display: flex; justify-content: center; align-items: center">
+          <video class="video" width="100%" id="xyalias9" loop playsinline autoplay muted src="web/resources/bahnhof_pj.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+          <canvas height=0 class="videoMerge" id="xyalias9Merge" style="width: 80%;"></canvas>
+        </div>
+        <div class="content has-text-centered" style="width: 80%; display: flex; justify-content: center; align-items: center">
+          <video class="video" width="100%" id="xyalias10" loop playsinline autoplay muted src="web/resources/polybahn_pj.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+          <canvas height=0 class="videoMerge" id="xyalias10Merge" style="width: 80%;"></canvas>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            Here, we show more comparisons with NeRF-W and RobustNeRF. 
+          </p>
+        </div>
+
+        <div class="container">
+          <ul class="nav nav-tabs nav-fill nav-justified" id="object-scale-recon">
+              <li class="nav-item">
+                <a class="nav-link active" onclick="objectSceneEvent(0)">station</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(1)">patio-high</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(2)">arc de triomphe</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(3)">drone</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(4)">tree</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(5)">mountain</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(6)">spot</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="objectSceneEvent(7)">corner</a>
+              </li>
+          </ul>
+          <div class="b-dics">
+              <img src="web/resources/self/half_bahnhof/nerfw.png" alt="NeRF-W">
+              <img src="web/resources/self/half_bahnhof/robust.png" alt="RobustNeRF">
+              <img src="web/resources/self/half_bahnhof/ours.png" alt="NeRF On-the-go(ours)">
+              <img src="web/resources/self/half_bahnhof/gt.png" alt="GT">
+          </div>
+        </div>
+
+        <br>
+        <br><br>
+    </div>
+
+  </div>
+</section> -->
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@InProceedings{Ren2024NeRF,
+    title={NeRF On-the-go: Exploiting Uncertainty for Distractor-free NeRFs in the Wild},
+    author={Ren, Weining and Zhu, Zihan and Sun, Boyang and Chen, Jiaqi and Pollefeys, Marc and Peng, Songyou},
+    booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year={2024},
+}</code></pre>
+  </div>
+</section> -->
+
+<!-- <section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    We thank the Max Planck ETH Center for Learning Systems (CLS) for supporting Songyou Peng. 
+We also thank Yiming Zhao and Clément Jambon for helpful discussions.
+  </div>
+</section> -->
+
+<!-- <section class="section" id="References">
+  <div class="container is-max-desktop content">
+
+        <h3 class="title is-4">References</h3>
+        <div class="content has-text-justified">
+          <ul>
+            <li>
+              <a href="https://robustnerf.github.io/" target="_blank">RobustNeRF: Ignoring Distractors with Robust Losses</a>
+            </li>
+            <li>
+              <a href="https://nerf-w.github.io/" target="_blank">NeRF in the Wild: Neural Radiance Fields for Unconstrained Photo Collections</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This webpage template is from <a href="https://github.com/autonomousvision/mip-splatting">mip-splatting</a>, which is built upon <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template. 
+          </p>
+        </div>
+      </div>
+          <p></p>
+        </div>
+      </div>
+</footer>
+
+</body>
+</html>
