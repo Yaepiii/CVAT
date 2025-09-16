@@ -15,7 +15,7 @@ Make sure the following dependencies are installed:
 - PCL >= 1.8.0
 - Eigen >= 3.2.1
 
-### :pencil: CVAT
+### :pencil: Build
 
 Clone this repository and build:
 ```
